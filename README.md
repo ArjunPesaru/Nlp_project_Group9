@@ -98,11 +98,6 @@ def get_db_connection():
     )
 ```
 
-If using Flask or another framework, adjust the connection string accordingly:
-
-```python
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://taskuser:password@localhost/taskscheduler'
-```
 
 ## Usage
 
