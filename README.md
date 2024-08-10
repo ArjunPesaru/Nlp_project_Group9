@@ -72,10 +72,6 @@ CREATE DATABASE taskscheduler;
 
 You can create a specific user for this database:
 
-```sql
-CREATE USER taskuser WITH ENCRYPTED PASSWORD 'password';
-GRANT ALL PRIVILEGES ON DATABASE taskscheduler TO taskuser;
-```
 
 ### Step 3: Run Migrations (if applicable)
 
@@ -92,16 +88,14 @@ Update the application's configuration to use PostgreSQL. This might involve set
 For example, in a Django project, modify `settings.py`:
 
 ```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'taskscheduler',
-        'USER': 'taskuser',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+def get_db_connection():
+    return psycopg2.connect(
+        host='localhost',
+        user='postgres',
+        password='12345678',
+        database='sra',
+        port=5432
+    )
 ```
 
 If using Flask or another framework, adjust the connection string accordingly:
